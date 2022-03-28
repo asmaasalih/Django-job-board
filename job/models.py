@@ -10,6 +10,11 @@ class Category(models.Model):
         return self.name
 
 
+def image_upload(instance,filename):
+    image_name , extension = filename.split('.')
+    return 'media/jobs/%s%s' %(instance.id,extension)
+
+
 class Job(models.Model):
     JOB_TYPE = (
     ('Full time','Full time'),
@@ -25,6 +30,7 @@ class Job(models.Model):
     vacancy = models.IntegerField(default=1)
     salary = models.IntegerField(default=0)
     experience = models.IntegerField(default=1)
+    image = models.ImageField(upload_to=image_upload)
 
     def __str__(self):
         return self.title
