@@ -40,3 +40,15 @@ class Job(models.Model):
 
     def __str__(self):
         return self.title
+
+class Apply(models.Model):
+    job = models.ForeignKey(Job, on_delete=models.CASCADE)     
+    name = models.CharField(max_length=50)
+    email = models.EmailField(max_length=256)
+    website = models.URLField()  
+    cv = models.FileField(upload_to='apply/', max_length=100)
+    created_at = models.DateTimeField(auto_now=True)
+    cover_letter = models.TextField(max_length=500)
+
+    def __str__(self):
+        return self.name
