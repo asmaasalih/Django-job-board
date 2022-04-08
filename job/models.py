@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.utils.text import slugify
 
 # Create your models here.
@@ -20,7 +21,7 @@ class Job(models.Model):
     ('Full time','Full time'),
     ('Part time','Part time')
    ) 
-
+    owner = models.ForeignKey(User, related_name='job_owner', on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     #location
