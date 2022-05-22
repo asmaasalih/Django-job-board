@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'job',
     'bootstrap4',
     'contact',
+    'rest_framework',
     
     
 ]
